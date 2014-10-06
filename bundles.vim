@@ -1,0 +1,69 @@
+" Required:
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Plugins by Shougo
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/unite-outline"
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/neomru.vim'
+
+" ColorSchemes
+NeoBundle 'dandorman/vim-colors'
+NeoBundle 'sjl/badwolf'
+
+" Plugin for status bar
+NeoBundle 'bling/vim-airline'
+"NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+
+" Gist Vim
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+
+" Plugin for Snippets & Syntax
+NeoBundle 'honza/vim-snippets'
+NeoBundle "garbas/vim-snipmate"
+NeoBundle 'bonsaiben/bootstrap-snippets' 
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Raimondi/delimitMate'
+
+" Plugins by TimPope
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat' 
+NeoBundle 'tpope/vim-endwise.git' 
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'tpope/vim-rake.git'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'tpope/vim-dispatch'
+
+" NERDTree and NERDTreeTabs
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+
+" Ctrl+P
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
