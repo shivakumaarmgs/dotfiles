@@ -1,4 +1,4 @@
-let mapleader = '`' "something one wont use
+let mapleader = '<space>' "something one wont use
 
 " Vim Shell Keybindings
 nnoremap <leader>sh :VimShellPop<CR>
