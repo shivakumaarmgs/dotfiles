@@ -20,12 +20,13 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$PATH:/opt/node/bin
 
 # Custom Aliases
-alias tmux='tmux -2 -u'
-alias mux='tmux -2 -u'
+alias tmux='TERM=xterm-256color tmux -u'
+alias mux='TERM=xterm-256color tmux -u'
 
 alias v='vim'
 alias vi='vim'
 
+alias vc='vim ~/.vimrc'
 alias zc='vim ~/.zshrc'
 alias zpc='vim ~/.zpreztorc'
 
