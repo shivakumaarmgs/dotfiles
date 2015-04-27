@@ -7,7 +7,7 @@ endif
 source ~/dotfiles/bundles.vim
 
 " Required:
-filetype plugin indent on
+"filetype plugin on
 
 " From anandraj02/dotfiles 
 syntax on
@@ -48,7 +48,7 @@ cnoreabbrev X x
 cnoreabbrev Q q
 
 "if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
+set t_Co=256
 "endif
 
 syntax enable
@@ -93,22 +93,26 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
-let g:airline_branch_prefix   = "☁"
+"let g:airline_branch_prefix   = "☁"
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = '☁'
 
-" NeoComplete Settings
+" Neo Complete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_fuzzy_completion = 1
 
-" Neo Snippet snippets 
+" Neo Snippets
+let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibility = 1
-let  g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#scope_aliases = {}
+let g:neosnippet#scope_aliases['ruby'] = 'ruby,rails'
+
+" For snippet_complete marker
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-"DelimitMate ERB settings
+" DelimitMate ERB settings
 let delimitMate_matchpairs = '(:),[:],{:},<:>'
 let delimitMate_quotes = "\" ' ` | %"
 
@@ -117,7 +121,7 @@ let g:gist_show_privates = 1
 let g:gist_post_private = 1
 let g:gist_detect_filetype = 1
 
-" Rabl as ruby
+ "Rabl as ruby
 au BufRead,BufNewFile *.rabl setf ruby
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 au BufRead,BufNewFile *.html.erb set ft=eruby.html

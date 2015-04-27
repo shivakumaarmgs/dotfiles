@@ -35,29 +35,38 @@ nnoremap <leader>rm :Rmodel<space>
 nnoremap <leader>rc :Rcontroller<space>
 nnoremap <leader>rs :Rstylesheet<space>
 nnoremap <leader>rj :Rjavascript<space>
+nnoremap <Leader>rt :Rspec<space>
+
+" Keybindings to run test
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>n :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " Buffer Navigation
 nnoremap <leader>bp :bprevious<cr>
 nnoremap <leader>bn :bnext<cr>
 
 " Neo Complete Keybindings
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplete#close_popup()
 inoremap <expr><C-e> neocomplete#cancel_popup()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<TAB>"
+
 
 " Neo Snippets Keybindings
-imap <c-k> <plug>(neosnippet_expand_or_jump)
-smap <c-k> <plug>(neosnippet_expand_or_jump)
-xmap <c-k> <plug>(neosnippet_expand_target)
-xmap <c-l> <plug>(neosnippet_start_unite_snippet_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><C-n> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<TAB>" : "\<C-n>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<TAB>" : "\<C-n>"
 smap <expr><C-n> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<C-n>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<C-n>"
 
 " Fugitive Key maps
 nnoremap <leader>gst :Gstatus<cr>
@@ -65,5 +74,10 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>ga :Gwrite<cr>
 nnoremap <leader>go :Gread<cr>
 
+" Flog Keys
+nnoremap <leader>fc :!flog % -d<cr>
+nnoremap <leader>rc :!rubocop --format fuubar %<cr>
+
 " Vim Dispatch Keymaps
+nnoremap <leader>bi :Dispatch bundle install<CR>
 

@@ -1,0 +1,92 @@
+set -g prefix C-j
+
+setw -g mode-keys vi
+
+set -g pane-base-index 1
+set -g base-index 1
+
+set-option -g default-shell "$SHELL -l"
+set -g default-shell $SHELL
+
+bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
+
+# Vertical Split
+bind | split-window -h -c "#{pane_current_path}"
+
+# Horizontal Split
+bind - split-window -v -c "#{pane_current_path}"
+
+# Resize Pane
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# navigate pane through pane
+bind h select-pane -L 
+bind j select-pane -D 
+bind k select-pane -U 
+bind l select-pane -R
+
+# Cycle throug window
+bind -r b previous-window
+bind -r n next-window
+
+# Mouse Mode
+setw -g mode-mouse on
+set-option -g mouse-select-pane on
+
+# Copy Mode
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
+# Theme
+set -g status-bg 'colour235'
+set -g message-command-fg 'colour222'
+set -g status-justify 'centre'
+set -g status-left-length '100'
+set -g status 'on'
+set -g pane-active-border-fg 'colour154'
+set -g message-bg 'colour238'
+set -g status-right-length '100'
+set -g status-right-attr 'none'
+set -g message-fg 'colour222'
+set -g message-command-bg 'colour238'
+set -g status-attr 'none'
+set -g status-utf8 'on'
+set -g pane-border-fg 'colour238'
+set -g status-left-attr 'none'
+setw -g window-status-fg 'colour121'
+setw -g window-status-attr 'none'
+setw -g window-status-activity-bg 'colour235'
+setw -g window-status-activity-attr 'none'
+setw -g window-status-activity-fg 'colour154'
+setw -g window-status-separator ''
+setw -g window-status-bg 'colour235'
+set -g status-left '#[fg=colour232,bg=colour154] #S #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #W #[fg=colour238,bg=colour232,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] #(whoami)  Online: #{online_status} #[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]'
+set -g status-right "#[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] %I:%M %p  %A  %d %B %Y #[fg=colour238,bg=colour232,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #H #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour232,bg=colour154] #{battery_icon} #{battery_percentage}."
+setw -g window-status-format '#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[default] #I  #W #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics].'
+setw -g window-status-current-format '#[fg=colour235,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #I  #W  #F #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]'
+
+# List of plugins
+# Supports `github_username/repo` or full git URLs
+set -g @tpm_plugins "             \
+      tmux-plugins/tpm                \
+      tmux-plugins/tmux-sensible      \
+      tmux-plugins/tmux-battery       \
+      tmux-plugins/tmux-resurrect \
+      tmux-plugins/tmux-online-status \
+      tmux-plugins/tmux-yank \
+      tmux-plugins/tmux-copycat \
+"
+# Other examples:
+# github_username/plugin_name    \
+# git@github.com/user/plugin     \
+# git@bitbucket.com/user/plugin  \
+
+# initializes TMUX plugin manager
+      run-shell ~/.tmux/plugins/tpm/tpm

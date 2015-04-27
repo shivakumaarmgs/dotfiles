@@ -1,6 +1,5 @@
 " Required:
-call neobundle#rc(expand('~/.vim/bundle/'))
-
+call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -31,20 +30,20 @@ NeoBundle 'sjl/badwolf'
 NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-
 " Gist Vim
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 
 " Plugin for Snippets & Syntax
-NeoBundle 'honza/vim-snippets'
 NeoBundle "garbas/vim-snipmate"
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'bonsaiben/bootstrap-snippets' 
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'nono/vim-handlebars'
 
 " Plugins by TimPope
 NeoBundle 'tpope/vim-fugitive'
@@ -55,6 +54,9 @@ NeoBundle 'tpope/vim-rake.git'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-dispatch'
 
+NeoBundle 'thoughtbot/vim-rspec'
+NeoBundle 'ngmy/vim-rubocop'
+
 " NERDTree and NERDTreeTabs
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -63,6 +65,12 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 " Ctrl+P
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
+
+
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'slim-template/vim-slim'
+
+call neobundle#end()
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
