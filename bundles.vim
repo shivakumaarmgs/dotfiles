@@ -5,13 +5,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins by Shougo
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle "Shougo/unite.vim"
-NeoBundle "Shougo/unite-outline"
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -23,7 +16,6 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neomru.vim'
 
 " ColorSchemes
-NeoBundle 'dandorman/vim-colors'
 NeoBundle 'sjl/badwolf'
 
 " Plugin for status bar
@@ -35,9 +27,6 @@ NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 
 " Plugin for Snippets & Syntax
-NeoBundle "garbas/vim-snipmate"
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'bonsaiben/bootstrap-snippets' 
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'Valloric/MatchTagAlways'
@@ -46,7 +35,6 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'nono/vim-handlebars'
 
 " Plugins by TimPope
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat' 
 NeoBundle 'tpope/vim-endwise.git' 
 NeoBundle 'tpope/vim-surround.git'

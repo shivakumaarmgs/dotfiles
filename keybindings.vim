@@ -18,16 +18,7 @@ vmap <C-a> ggVG
 vmap <C-x> dd
 inoremap <C-a> <Esc>ggVG
 
-" Unite Settings
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " Overwrite settings.
-  imap <silent><buffer><expr> <C-t>     unite#do_action('tabopen')
-endfunction
-nnoremap <space>/ :Unite grep:.<cr>
-
-" Unite and CtrlP Keybindings
-nnoremap <C-u> :tabe<cr>:Unite file_rec/async<cr>
+" ctrlp
 nnoremap <leader><C-p> :tabe<cr>:CtrlP<cr>
 
 " Keybindings to migrate within Rails Project
@@ -46,33 +37,6 @@ map <Leader>a :call RunAllSpecs()<CR>
 " Buffer Navigation
 nnoremap <leader>bp :bprevious<cr>
 nnoremap <leader>bn :bnext<cr>
-
-" Neo Complete Keybindings
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-
-" Neo Snippets Keybindings
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><C-n> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<TAB>" : "\<C-n>"
-smap <expr><C-n> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<C-n>"
-
-" Fugitive Key maps
-nnoremap <leader>gst :Gstatus<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>ga :Gwrite<cr>
-nnoremap <leader>go :Gread<cr>
 
 " Flog Keys
 nnoremap <leader>fc :!flog % -d<cr>

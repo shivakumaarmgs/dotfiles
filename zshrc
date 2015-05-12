@@ -47,16 +47,7 @@ alias zc='vim ~/.zshrc'
 alias zpc='vim ~/.zpreztorc'
 alias tc='vim ~/.tmux.conf'
 
-alias rpca='cd ~/Rails/PCA'
-alias rpa='cd ~/Rails/rpa'
-alias tts='cd ~/Rails/TTS'
-alias wso='cd ~/Rails/wbesock'
-alias wrksp='cd ~/Rails/workshop'
-
-alias ebe='cd ~/Ember/bostonember'
-
 alias :Q='exit'
 alias :q='exit'
 
-export ADMIN_USER='admincool'
-export ADMIN_PASS='adminpass'
+source ~/dotfiles/alias_and_env

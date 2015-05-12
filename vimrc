@@ -97,21 +97,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☁'
 
-" Neo Complete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_fuzzy_completion = 1
-
-" Neo Snippets
-let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets, ~/.vim/bundle/custom-snippets/snippets'
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#scope_aliases = {}
-let g:neosnippet#scope_aliases['ruby'] = 'ruby,rails'
-
-" For snippet_complete marker
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 " DelimitMate ERB settings
 let delimitMate_matchpairs = '(:),[:],{:},<:>'
 let delimitMate_quotes = "\" ' ` | %"
