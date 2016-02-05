@@ -1,3 +1,5 @@
+set -g default-terminal screen-256color
+
 set -g prefix C-j
 
 setw -g mode-keys vi
@@ -9,6 +11,12 @@ set-option -g default-shell "$SHELL -l"
 set -g default-shell $SHELL
 
 bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
+
+# Scrolling in Tmux
+setw -g mode-keys vi
+set -g status-keys vi
+bind-key -t vi-edit Up   history-up
+bind-key -t vi-edit Down history-down
 
 # Vertical Split
 bind | split-window -h -c "#{pane_current_path}"
@@ -38,7 +46,7 @@ set-option -g mouse-select-pane on
 
 # Copy Mode
 unbind [
-bind Escape copy-mode
+bind v copy-mode
 unbind p
 bind p paste-buffer
 bind-key -t vi-copy 'v' begin-selection

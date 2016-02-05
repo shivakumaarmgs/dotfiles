@@ -24,18 +24,20 @@ function! s:unite_my_settings()
   " Overwrite settings.
   imap <silent><buffer><expr> <C-t>     unite#do_action('tabopen')
 endfunction
-nnoremap <space>/ :Unite grep:.<cr>
+
+" search in the whole folder
+nnoremap <leader>/ :Unite grep:.<cr>
 
 " Unite and CtrlP Keybindings
 nnoremap <C-u> :tabe<cr>:Unite file_rec/async<cr>
 nnoremap <leader><C-p> :tabe<cr>:CtrlP<cr>
 
 " Keybindings to migrate within Rails Project
-nnoremap <leader>rm :Rmodel<space> 
-nnoremap <leader>rc :Rcontroller<space>
-nnoremap <leader>rs :Rstylesheet<space>
-nnoremap <leader>rj :Rjavascript<space>
-nnoremap <Leader>rt :Rspec<space>
+nnoremap <leader>rm :Tmodel<space> 
+nnoremap <leader>rc :Tcontroller<space>
+nnoremap <leader>rs :Tstylesheet<space>
+nnoremap <leader>rj :Tjavascript<space>
+nnoremap <Leader>rt :Tspec<space>
 
 " Keybindings to run test
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -81,3 +83,10 @@ nnoremap <leader>rc :!rubocop --format fuubar %<cr>
 " Vim Dispatch Keymaps
 nnoremap <leader>bi :Dispatch bundle install<CR>
 
+" Pane Keymaps
+map <leader>vs :vs<cr>:CtrlP<cr>
+map <leader>hs :sp<cr>:CtrlP<cr>
+map <C-l> :wincmd l<cr>
+map <C-h> :wincmd h<cr>
+map <C-k> :wincmd k<cr>
+map <C-j> :wincmd j<cr>

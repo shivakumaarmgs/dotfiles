@@ -29,6 +29,7 @@ NeoBundle 'sjl/badwolf'
 " Plugin for status bar
 NeoBundle 'bling/vim-airline'
 "NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Gist Vim
 NeoBundle 'mattn/gist-vim'

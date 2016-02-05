@@ -39,6 +39,8 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save
 
+set t_ut=
+
 " From Vysakh0 dotfiles
 " exit vim with :Q. 
 cnoreabbrev Wq w
@@ -47,12 +49,12 @@ cnoreabbrev WQ wq
 cnoreabbrev X x
 cnoreabbrev Q q
 
-"if $COLORTERM == 'gnome-terminal'
-set t_Co=256
-"endif
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
 
 syntax enable
-set background=dark
+set background=light
 colorscheme badwolf
 let g:badwolf_darkgutter = 1
 
@@ -75,6 +77,21 @@ endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_theme= 'badwolf'
 
+" Unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.crypt = '🔒'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+
 "Patched Powerline fonts not seem to be working for me
 "I have this which give you clean airline \m/
 "let g:airline_left_sep          = '▶'
@@ -93,7 +110,7 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
-"let g:airline_branch_prefix   = "☁"
+"let g:airline_branch_prefix   = '☁'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☁'
 
@@ -121,7 +138,10 @@ let g:gist_show_privates = 1
 let g:gist_post_private = 1
 let g:gist_detect_filetype = 1
 
- "Rabl as ruby
+" Ctrl p finds directory based on .git/.hg file
+let g:ctrlp_working_path_mode = 'r'
+
+"consider rabl as ruby
 au BufRead,BufNewFile *.rabl setf ruby
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 au BufRead,BufNewFile *.html.erb set ft=eruby.html
