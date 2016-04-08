@@ -9,9 +9,9 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle "Shougo/unite.vim"
-NeoBundle "Shougo/unite-outline"
+"NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -25,6 +25,7 @@ NeoBundle 'Shougo/neomru.vim'
 " ColorSchemes
 NeoBundle 'dandorman/vim-colors'
 NeoBundle 'sjl/badwolf'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 " Plugin for status bar
 NeoBundle 'bling/vim-airline'
@@ -36,15 +37,11 @@ NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 
 " Plugin for Snippets & Syntax
-NeoBundle "garbas/vim-snipmate"
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'bonsaiben/bootstrap-snippets' 
-NeoBundle 'tomtom/tlib_vim'
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'nono/vim-handlebars'
+NeoBundle 'elixir-lang/vim-elixir'
 
 " Plugins by TimPope
 NeoBundle 'tpope/vim-fugitive'
@@ -57,11 +54,13 @@ NeoBundle 'tpope/vim-dispatch'
 
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'ngmy/vim-rubocop'
+"NeoBundle 'sentientmonkey/vim-flog'
+"NeoBundle 'rainerborene/vim-reek'
 
 " NERDTree and NERDTreeTabs
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'jistr/vim-nerdtree-tabs'
+"NeoBundle 'jistr/vim-nerdtree-tabs'
 
 " Ctrl+P
 NeoBundle 'kien/ctrlp.vim'

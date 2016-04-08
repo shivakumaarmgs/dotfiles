@@ -27,6 +27,7 @@ set autoindent
 set smartindent
 set mouse=a
 " set spell
+set hidden
 set cursorline
 set clipboard=unnamed
 set backspace=indent,eol,start " Make backspace behave normally.
@@ -39,7 +40,15 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save
 
-set t_ut=
+" making vim fast
+set re=1
+set noballooneval
+set ttyfast
+set lazyredraw
+
+" ctrl p ignore files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 " From Vysakh0 dotfiles
 " exit vim with :Q. 
@@ -49,25 +58,28 @@ cnoreabbrev WQ wq
 cnoreabbrev X x
 cnoreabbrev Q q
 
+" clear background color in vim
+set t_ut=
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
 syntax enable
-set background=light
+set background=dark
 colorscheme badwolf
-let g:badwolf_darkgutter = 1
+let g:badwolf_darkgutter = 0
 
 " NERDTree settings
-autocmd vimenter * NERDTree
-autocmd VimEnter * wincmd p  "placing cursor in file window instead for nerdtree
-autocmd vimenter * if !argc() | NERDTree | endif
-let  g:nerdtree_tabs_smart_startup_focus = 1
-let  g:nerdtree_tabs_open_on_console_startup=1
+"autocmd vimenter * NERDTree
+"autocmd VimEnter * wincmd p  "placing cursor in file window instead for nerdtree
+"autocmd vimenter * if !argc() | NERDTree | endif
+"let  g:nerdtree_tabs_smart_startup_focus = 1
+"let  g:nerdtree_tabs_open_on_console_startup=1
 
 " Airline Settings
 set laststatus=2
 set encoding=utf-8
+let g:rails_menu=0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled= 1
@@ -132,6 +144,7 @@ endif
 " DelimitMate ERB settings
 let delimitMate_matchpairs = '(:),[:],{:},<:>'
 let delimitMate_quotes = "\" ' ` | %"
+let g:syntastic_enable_elixir_checker=0
 
 " Gist Vim settings
 let g:gist_show_privates = 1
@@ -140,10 +153,22 @@ let g:gist_detect_filetype = 1
 
 " Ctrl p finds directory based on .git/.hg file
 let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|ttf|png|jpg|gz|woff|woff2)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" Reek settings
+"let g:reek_on_loading = 0
+"let g:reek_always_show = 0
+
+" Rspec settings
+let g:rspec_command = ":Dispatch ./test.sh reg {spec}"
 
 "consider rabl as ruby
-au BufRead,BufNewFile *.rabl setf ruby
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-au BufRead,BufNewFile *.html.erb set ft=eruby.html
+"au BufRead,BufNewFile *.rabl setf ruby
+"autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"au BufRead,BufNewFile *.html.erb set ft=eruby.html
 
 source ~/dotfiles/keybindings.vim

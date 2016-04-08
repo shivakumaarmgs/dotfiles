@@ -1,5 +1,8 @@
 let mapleader = ' ' "something one wont use
 
+" Format json in vim
+nnoremap <leader>fj :%! python -m json.tool<cr>
+
 " Vim Shell Keybindings
 nnoremap <leader>sh :VimShellPop<CR>
 
@@ -13,10 +16,9 @@ nnoremap <leader>. :tabnext<CR>
 nnoremap <leader>, :tabprevious<CR>
 
 " Copy Paste Delete
+map <C-a> ggVG
 vmap <C-c> "+y
-vmap <C-a> ggVG
 vmap <C-x> dd
-inoremap <C-a> <Esc>ggVG
 
 " Unite Settings
 autocmd FileType unite call s:unite_my_settings()
@@ -24,6 +26,9 @@ function! s:unite_my_settings()
   " Overwrite settings.
   imap <silent><buffer><expr> <C-t>     unite#do_action('tabopen')
 endfunction
+
+" nerd tree
+map <leader>f :NERDTreeToggle<CR>
 
 " search in the whole folder
 nnoremap <leader>/ :Unite grep:.<cr>
@@ -79,6 +84,7 @@ nnoremap <leader>go :Gread<cr>
 " Flog Keys
 nnoremap <leader>fc :!flog % -d<cr>
 nnoremap <leader>rc :!rubocop --format fuubar %<cr>
+nnoremap <leader>rk :RunReek
 
 " Vim Dispatch Keymaps
 nnoremap <leader>bi :Dispatch bundle install<CR>
