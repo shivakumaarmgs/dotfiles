@@ -1,4 +1,4 @@
-# set -g default-terminal screen
+set -g default-terminal "screen-256color"
 
 set -g prefix C-j
 
@@ -8,9 +8,11 @@ set -g pane-base-index 1
 set -g base-index 1
 
 set-option -g default-shell "$SHELL -l"
-set -g default-shell $SHELL
+set -g default-shell /bin/zsh
 
 bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
+
+bind X confirm-before "kill-session -t ''"
 
 # Scrolling in Tmux
 setw -g mode-keys vi
@@ -41,8 +43,8 @@ bind -r b previous-window
 bind -r n next-window
 
 # Mouse Mode
-setw -g mode-mouse on
-set-option -g mouse-select-pane on
+setw -g mouse
+#set-option -g mouse-select-pane on
 
 # Copy Mode
 unbind [

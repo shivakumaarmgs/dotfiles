@@ -16,47 +16,36 @@ fi
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
-export PATH="$PATH:$HOME/packer"
+export TERM='xterm-256color'
 
-# Path setting for psql
-#PATH=/usr/local/pgsql/bin:$PATH
-#export PATH
-
-# tmuxinatior config
-source ~/Downloads/tmuxinator.zsh
-
-# node path
-export PATH=$PATH:/opt/node/bin
-
-# Custom Aliases
-alias tmux='TERM=xterm-256color tmux -u'
-#alias mux='TERM=xterm-256color tmux -u'
-
-alias bi="bundle install"
-
-alias v='vim'
-alias vi='vim'
-
-alias muxi='cd ~/.tmuxinator'
-
+alias vi=vim
 alias vc='vim ~/.vimrc'
+alias vb='vim ~/dotfiles/bundles.vim'
+alias vk='vim ~/dotfiles/keybindings.vim'
 alias zc='vim ~/.zshrc'
-alias zpc='vim ~/.zpreztorc'
+alias zr='source ~/.zshrc'
 alias tc='vim ~/.tmux.conf'
-
-alias rpca='cd ~/Rails/PCA'
-alias rpa='cd ~/Rails/rpa'
-alias tts='cd ~/Rails/TTS'
-alias wso='cd ~/Rails/wbesock'
-alias wrksp='cd ~/Rails/workshop'
-
-alias ebe='cd ~/Ember/bostonember'
-
-alias :Q='exit'
+alias muxi='cd ~/.tmuxinator/' 
 alias :q='exit'
+alias :Q='exit'
+alias tmux='TERM=xterm-256color tmux -u'
+alias mux='tmuxinator'
 
-export ADMIN_USER='admincool'
-export ADMIN_PASS='adminpass'
+alias dash='cd ~/bin_shivakumaar/CI_IGNORE/pc_dash_board/'
+alias app='cd ~/bin_shivakumaar/CI_IGNORE/pc_requirement_gathering/'
+alias ccode='cd ~/bin_shivakumaar/CI_IGNORE/common_code/'
+alias theme='cd ~/development_dep/inspina\ theme/products-WB0R5L90S/Rails_Full_Version/'
+
+alias godw='vi ~/bin_shivakumaar/sdf_god/god_commands/system_promptcloud_rails_apps_and_related_resque_workers_god_commands.yml'
+
+export EDITOR=vim
+export VISUAL=vim
+
+export NVM_DIR="/home/prompt/.nvm"
+
+source ~/.alias

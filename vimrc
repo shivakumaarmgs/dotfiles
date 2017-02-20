@@ -15,6 +15,9 @@ set number
 set relativenumber
 filetype plugin on
 filetype indent on
+"set textwidth=80
+"set formatoptions+=t
+"set formatoptions-=l
 set noswapfile
 set incsearch
 set ignorecase
@@ -60,6 +63,7 @@ cnoreabbrev Q q
 
 " clear background color in vim
 set t_ut=
+set term=screen-256color
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
@@ -73,6 +77,7 @@ let g:badwolf_darkgutter = 0
 "autocmd vimenter * NERDTree
 "autocmd VimEnter * wincmd p  "placing cursor in file window instead for nerdtree
 "autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd BufWinEnter * NERDTreeMirror
 "let  g:nerdtree_tabs_smart_startup_focus = 1
 "let  g:nerdtree_tabs_open_on_console_startup=1
 
@@ -165,6 +170,8 @@ let g:ctrlp_custom_ignore = {
 
 " Rspec settings
 let g:rspec_command = ":Dispatch ./test.sh reg {spec}"
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "consider rabl as ruby
 "au BufRead,BufNewFile *.rabl setf ruby

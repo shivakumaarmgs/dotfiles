@@ -42,6 +42,7 @@ NeoBundle 'Valloric/MatchTagAlways'
 "NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'mxw/vim-jsx'
 
 " Plugins by TimPope
 NeoBundle 'tpope/vim-fugitive'
