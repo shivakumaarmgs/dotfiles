@@ -42,5 +42,4 @@ export VISUAL=vim
 
 export NVM_DIR="/home/prompt/.nvm"
 
-source ~/.alias
-source ~/.prompt_alias
+source sys_alias_and_env
