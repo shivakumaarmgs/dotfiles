@@ -26,6 +26,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'dandorman/vim-colors'
 NeoBundle 'sjl/badwolf'
 NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'Yggdroot/indentLine'
 
 " Plugin for status bar
 NeoBundle 'bling/vim-airline'
@@ -38,11 +39,13 @@ NeoBundle 'mattn/webapi-vim'
 
 " Plugin for Snippets & Syntax
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Valloric/MatchTagAlways'
-"NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'tmhedberg/matchit'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'robbles/logstash'
 
 " Plugins by TimPope
 NeoBundle 'tpope/vim-fugitive'

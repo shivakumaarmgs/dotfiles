@@ -15,7 +15,13 @@ set number
 set relativenumber
 filetype plugin on
 filetype indent on
-"set textwidth=80
+
+"https://robots.thoughtbot.com/wrap-existing-text-at-80-characters-in-vim
+set textwidth=80
+highlight ColorColumn ctermbg=gray
+set colorcolumn=80
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
 "set formatoptions+=t
 "set formatoptions-=l
 set noswapfile
@@ -45,7 +51,6 @@ set undoreload=10000 "maximum number lines to save
 
 " making vim fast
 set re=1
-set noballooneval
 set ttyfast
 set lazyredraw
 
@@ -163,6 +168,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|ttf|png|jpg|gz|woff|woff2)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+let g:ctrlp_user_command =  ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
 " Reek settings
 "let g:reek_on_loading = 0
