@@ -17,7 +17,6 @@ filetype plugin on
 filetype indent on
 
 "https://robots.thoughtbot.com/wrap-existing-text-at-80-characters-in-vim
-set textwidth=80
 highlight ColorColumn ctermbg=gray
 set colorcolumn=80
 au BufRead,BufNewFile *.md setlocal textwidth=80
