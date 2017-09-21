@@ -36,10 +36,11 @@ alias :q='exit'
 alias :Q='exit'
 alias tmux='TERM=xterm-256color tmux -u'
 alias mux='tmuxinator'
+alias sae='vi ~/dotfiles/sys_alias_and_env'
 
 export EDITOR=vim
 export VISUAL=vim
 
 export NVM_DIR="/home/prompt/.nvm"
 
-source sys_alias_and_env
+source ~/dotfiles/sys_alias_and_env
