@@ -29,7 +29,7 @@ set ignorecase
 set showmatch
 set history=1000
 set title
-set expandtab
+"set expandtab
 set smarttab
 set autoindent
 set smartindent
@@ -41,12 +41,15 @@ set clipboard=unnamed
 set backspace=indent,eol,start " Make backspace behave normally.
 set wildmode=list:longest,full
 set wildmenu
-set tabstop=2 shiftwidth=2 softtabstop=2
+"set tabstop=2 shiftwidth=2 softtabstop=2
 set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save
+set foldmethod=indent
+set foldignore=
+set nofoldenable
 
 " making vim fast
 set re=1
@@ -178,6 +181,8 @@ let g:ctrlp_user_command =  ['.git', 'cd %s && git ls-files . -co --exclude-stan
 let g:rspec_command = ":Dispatch ./test.sh reg {spec}"
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+let g:vimshell_prompt='✔-shell:▶ '
 
 "consider rabl as ruby
 "au BufRead,BufNewFile *.rabl setf ruby

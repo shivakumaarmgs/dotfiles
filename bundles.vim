@@ -9,7 +9,7 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler.vim'
-"NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimproc', {
@@ -55,11 +55,14 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-rake.git'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-sleuth'
 
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'ngmy/vim-rubocop'
 "NeoBundle 'sentientmonkey/vim-flog'
 "NeoBundle 'rainerborene/vim-reek'
+NeoBundle 'ekalinin/Dockerfile.vim'
 
 " NERDTree and NERDTreeTabs
 NeoBundle 'scrooloose/nerdtree'
