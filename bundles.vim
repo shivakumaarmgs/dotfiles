@@ -6,7 +6,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Plugins by Shougo
 NeoBundle 'Shougo/neocomplete'
-
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler.vim'
