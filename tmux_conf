@@ -40,7 +40,7 @@ bind l select-pane -R
 
 # Cycle throug window
 bind -r b previous-window
-bind -r n next-window
+#bind -r n next-window
 
 # Mouse Mode
 setw -g mouse
@@ -73,7 +73,7 @@ set -g status-right-attr 'none'
 set -g message-fg 'colour222'
 set -g message-command-bg 'colour238'
 set -g status-attr 'none'
-#set -g status-utf8 'on'
+set -g status-utf8 'on'
 set -g pane-border-fg 'colour238'
 set -g status-left-attr 'none'
 setw -g window-status-fg 'colour121'

@@ -1,5 +1,10 @@
 let mapleader = ' ' "something one wont use
 
+nnoremap <leader>2t :call SetTwoTabStops()<cr>
+function! SetTwoTabStops()
+  set tabstop=2 shiftwidth=2 softtabstop=2
+endfunction
+
 " Format json in vim
 nnoremap <leader>fj :%! python -m json.tool<cr>
 
@@ -28,25 +33,16 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-t>     unite#do_action('tabopen')
 endfunction
 
-" nerd tree
-map <leader>f :NERDTreeToggle<CR>
-
-" search in the whole folder
-nnoremap <leader>/ :Unite grep:.<cr>
-
-" Unite and CtrlP Keybindings
-nnoremap <C-u> :tabe<cr>:Unite file_rec/async<cr>
-nnoremap <leader><C-p> :tabe<cr>:CtrlP<cr>
-
 " Ctrl-p behaviour {{{
 nnoremap <Leader><Leader> :Unite -start-insert file_rec/async<CR>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_reverse'])
 call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
-  \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/'], '\|'))
+  \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'vendor/', 'log/'], '\|'))
 
-let g:unite_prompt = '>>> '
+let g:unite_source_grep_command = 'ag'
+let g:unite_prompt = '▶▶ '
 let g:unite_winheight = 15
 let g:unite_update_time = 200
 let g:unite_split_rule = 'botright'
@@ -63,6 +59,27 @@ function! s:unite_my_settings() "{{{
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction "}}}
 " End: Unite.ctrl-p }}}
+
+if executable('ag')
+  " Use ag (the silver searcher)
+  " https://github.com/ggreer/the_silver_searcher
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+        \ '-i --vimgrep --hidden --ignore ' .
+        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+" search in the whole folder
+nnoremap <leader>/ :Unite grep:.<cr>
+
+" Unite and CtrlP Keybindings
+nnoremap <C-u> :Unite file_rec/async<cr>
+nnoremap <leader><C-u> :tabe<cr>:Unite file_rec/async<cr>
+nnoremap <leader><C-p> :tabe<cr>:CtrlP<cr>
+
+" nerd tree
+map <leader>f :NERDTreeToggle<CR>
 
 " Keybindings to migrate within Rails Project
 nnoremap <leader>rm :Tmodel<space> 

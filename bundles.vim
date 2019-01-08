@@ -11,6 +11,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -24,6 +25,7 @@ NeoBundle 'Shougo/neomru.vim'
 
 " ColorSchemes
 NeoBundle 'dandorman/vim-colors'
+NeoBundle 'lifepillar/vim-solarized8'
 NeoBundle 'sjl/badwolf'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'Yggdroot/indentLine'
