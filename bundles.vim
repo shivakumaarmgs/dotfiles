@@ -27,11 +27,11 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'dandorman/vim-colors'
 NeoBundle 'lifepillar/vim-solarized8'
 NeoBundle 'sjl/badwolf'
-NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'Yggdroot/indentLine'
 
 " Plugin for status bar
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 "NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -41,6 +41,7 @@ NeoBundle 'mattn/webapi-vim'
 
 " Plugin for Snippets & Syntax
 NeoBundle 'honza/vim-snippets'
+"NeoBundle 'garbas/vim-snipmate'
 "NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'scrooloose/syntastic'
@@ -83,4 +84,3 @@ call neobundle#end()
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-

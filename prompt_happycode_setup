@@ -13,7 +13,7 @@
 function +vi-git-status() {
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    hook_com[unstaged]=' %F{8}✗%f'
+    hook_com[unstaged]=' %F{8}✗ %f'
   fi
 }
 
@@ -58,7 +58,7 @@ _prompt_frost_colors=(
   zstyle ':vcs_info:*' check-for-changes true
   zstyle ':vcs_info:*' get-revision true
   zstyle ':vcs_info:*' use-simple true
-  zstyle ':vcs_info:*' unstagedstr ' %F{8}✗%f'
+  zstyle ':vcs_info:*' unstagedstr ' %F{8}✗ %f'
   zstyle ':vcs_info:*' formats "%F{cyan}➤  %F{8}%b%f %F{blue}%.7i%f%u"
   zstyle ':vcs_info:*' actionformats ' %F{8}%b%f %F{white}%.7i%f +%a%u'
   zstyle ':vcs_info:git*+set-message:*' hooks git-status
@@ -74,9 +74,10 @@ _prompt_frost_colors=(
   fi
 
   local user="%(!.${_prompt_frost_colors[6]}.${_prompt_frost_colors[4]})%n"
+  local ctime="[${_prompt_frost_colors[2]}%*${_prompt_frost_colors[4]}]"
   
   # Define prompts.
-  PROMPT="╭──${user}@${host}:${_prompt_frost_colors[10]}%~${_prompt_frost_nocolor}
+  PROMPT="╭──${user}${ctime}:${_prompt_frost_colors[10]}%~${_prompt_frost_nocolor}
 ╰─%(?.%F{green}${1:-☻ %f ➜ }%f.%F{red}${1:-☻ %f ➜ }%f) "
 RPROMPT='${ruby_info[version]} ${vcs_info_msg_0_}'
 

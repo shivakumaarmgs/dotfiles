@@ -9,7 +9,7 @@ source ~/dotfiles/bundles.vim
 " Required:
 "filetype plugin on
 
-" From anandraj02/dotfiles 
+" From anandraj02/dotfiles
 syntax on
 set number
 set relativenumber
@@ -61,7 +61,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 " From Vysakh0 dotfiles
-" exit vim with :Q. 
+" exit vim with :Q.
 cnoreabbrev Wq w
 cnoreabbrev W w
 cnoreabbrev WQ wq
@@ -91,7 +91,7 @@ let g:badwolf_darkgutter = 0
 " Airline Settings
 set laststatus=2
 set encoding=utf-8
-let g:rails_menu=0
+let g:rails_menu=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled= 1
@@ -136,7 +136,8 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 "let g:airline_branch_prefix   = '☁'
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☁'
+"let g:airline_symbols.linenr = '☁'
+let g:airline_linecolumn_prefix = '⭡'
 
 " Neo Complete
 let g:neocomplete#enable_at_startup = 1

@@ -1,9 +1,9 @@
 let mapleader = ' ' "something one wont use
 
-nnoremap <leader>2t :call SetTwoTabStops()<cr>
-function! SetTwoTabStops()
-  set tabstop=2 shiftwidth=2 softtabstop=2
-endfunction
+nnoremap <leader>vr :source ~/.vimrc<cr>
+
+nnoremap <leader>2t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<cr>
+nnoremap <leader>8t :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=0<cr>
 
 " Format json in vim
 nnoremap <leader>fj :%! python -m json.tool<cr>
@@ -17,6 +17,11 @@ nnoremap <leader>ovc :tabe ~/.vimrc<cr>
 nnoremap <Leader>ozc :tabe ~/.zshrc<cr>
 nnoremap <leader>okb :tabe ~/dotfiles/keybindings.vim<cr>
 
+nnoremap <leader>osdfc :tabe ~/bin_shivakumaar/configs/sdf_config.yml<cr>
+nnoremap <leader>orgw :tabe ~/bin_shivakumaar/sdf_god/god_commands/production/<cr>
+nnoremap <leader>orqf :tabe ~/bin_shivakumaar/CI_IGNORE/common_code/config/queue_names_env_variables.yml<cr>
+nnoremap <leader>orev :tabe ~/bin_shivakumaar/CI_IGNORE/common_code/config/environment_variables.yml<cr>
+
 " Navigating through tabs Keybindings
 nnoremap <leader>. :tabnext<CR>
 nnoremap <leader>, :tabprevious<CR>
@@ -25,6 +30,11 @@ nnoremap <leader>, :tabprevious<CR>
 map <C-a> ggVG
 vmap <C-c> "+y
 vmap <C-x> dd
+
+" comment banner
+" from https://stackoverflow.com/questions/5085892/textmate-comment-banner-in-vim
+autocmd FileType javascript,php,c,cpp,css map <leader>ccb I/*     <ESC>A     */<ESC>yyp0llv$r-$hc$*/<ESC>yykPjj
+autocmd FileType python,perl,ruby,sh,zsh,conf,yaml  map <leader>ccb I#     <ESC>A     #<ESC>yyp0lv$hhr-yykPjj
 
 " Unite Settings
 autocmd FileType unite call s:unite_my_settings()
@@ -39,7 +49,7 @@ nnoremap <Leader><Leader> :Unite -start-insert file_rec/async<CR>
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_reverse'])
 call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
-  \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'vendor/', 'log/'], '\|'))
+  \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'vendor/', 'log/', 'extract_plugins/', 'extended_upload_plugins/', 'archive/', 'rss_plugin/'], '\|'))
 
 let g:unite_source_grep_command = 'ag'
 let g:unite_prompt = '▶▶ '

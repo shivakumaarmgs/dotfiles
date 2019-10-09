@@ -17,8 +17,8 @@ bind X confirm-before "kill-session -t ''"
 # Scrolling in Tmux
 setw -g mode-keys vi
 set -g status-keys vi
-bind-key -t vi-edit Up   history-up
-bind-key -t vi-edit Down history-down
+#bind-key -t vi-edit Up   history-up
+#bind-key -t vi-edit Down history-down
 
 # Vertical Split
 bind | split-window -h -c "#{pane_current_path}"
@@ -51,16 +51,25 @@ unbind [
 bind v copy-mode
 unbind p
 bind p paste-buffer
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+#bind-key -t vi-copy 'v' begin-selection
+#bind-key -t vi-copy 'y' copy-selection
 
 ## Join windows: <prefix> [, <prefix> ]
 bind-key [ join-pane -h -t {last}
 bind-key ] "break-pane"
 
 # Theme
-set -g @batt_charging_icon '\u0fd5'
-set -g @offline_icon '\u292b'
+set -g @batt_charged_icon ""
+set -g @batt_charging_icon ""
+set -g @batt_attached_icon ""
+set -g @batt_full_charge_icon ""
+set -g @batt_high_charge_icon ""
+set -g @batt_medium_charge_icon ""
+set -g @batt_low_charge_icon ""
+
+set -g @online_icon "直"
+set -g @offline_icon "睊"
+
 set -g status-bg 'colour235' 
 set -g message-command-fg 'colour222'
 set -g status-justify 'centre'
@@ -73,7 +82,7 @@ set -g status-right-attr 'none'
 set -g message-fg 'colour222'
 set -g message-command-bg 'colour238'
 set -g status-attr 'none'
-set -g status-utf8 'on'
+#set -g status-utf8 'on'
 set -g pane-border-fg 'colour238'
 set -g status-left-attr 'none'
 setw -g window-status-fg 'colour121'
@@ -83,8 +92,27 @@ setw -g window-status-activity-attr 'none'
 setw -g window-status-activity-fg 'colour154'
 setw -g window-status-separator ''
 setw -g window-status-bg 'colour235'
-set -g status-left '#[fg=colour232,bg=colour154] #S #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #W #[fg=colour238,bg=colour232,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] #(whoami)  Online: #{online_status} #[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]'
-set -g status-right "#[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] %I:%M %p  %A  %d %B %Y #[fg=colour238,bg=colour232,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #H #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour232,bg=colour154] #{battery_icon}  #{battery_percentage}."
+
+set -g @world_clock_tz 'utc'
+set -g @world_clock_tz 'Asia/Kolkata'
+
+#set -g @sysstat_cpu_color_low "red"
+#set -g @sysstat_cpu_color_medium "red"
+#set -g @sysstat_cpu_color_stress "red"
+#set -g @sysstat_mem_color_low "red red red"
+#set -g @sysstat_mem_color_medium "red red red"
+#set -g @sysstat_mem_color_stress "red red red"
+#set -g @sysstat_swap_color_low "red"
+#set -g @sysstat_swap_color_medium "red"
+#set -g @sysstat_swap_color_stress "red"
+
+#set -g @sysstat_cpu_view_tmpl '#[fg=colour232,bg=colour154]CPU: #[fg=#{cpu.color},bg=#{cpu.color2}]#{cpu.pused}'
+#set -g @sysstat_mem_view_tmpl '#[fg=colour232,bg=colour154]MEM: #[fg=#{mem.color},bg=#{mem.color2}]#{mem.pused}'
+
+set -g status-left '#[fg=colour232,bg=colour154] #S #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics] #[fg=colour222,bg=colour238] #W #[fg=colour238,bg=colour235]#[fg=colour154,bg=colour235] #(whoami) '
+set -g status-right "#[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] #{world_clock_status} | %Y-%m-%d #[fg=colour232,bg=colour154] #{online_status}  #{battery_icon} #{battery_percentage} "
+
+#set -g status-right "#{sysstat_cpu} | #{sysstat_mem} | #{sysstat_swap} | #{sysstat_loadavg}"
 setw -g window-status-format '#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[default] #I  #W #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics].'
 setw -g window-status-current-format '#[fg=colour235,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] #I  #W  #F #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]'
 
@@ -98,6 +126,8 @@ set -g @tpm_plugins "             \
       tmux-plugins/tmux-online-status \
       tmux-plugins/tmux-yank \
       tmux-plugins/tmux-copycat \
+      alexanderjeurissen/tmux-world-clock \
+      samoshkin/tmux-plugin-sysstat \
 "
 # Other examples:
 # github_username/plugin_name    \
