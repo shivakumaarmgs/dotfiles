@@ -1,9 +1,3 @@
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
 source ~/dotfiles/bundles.vim
 
 " Required:
@@ -50,6 +44,7 @@ set undoreload=10000 "maximum number lines to save
 set foldmethod=indent
 set foldignore=
 set nofoldenable
+set completeopt-=preview
 
 " making vim fast
 set re=1
@@ -77,7 +72,7 @@ endif
 
 syntax enable
 set background=dark
-colorscheme badwolf
+ colorscheme badwolf
 let g:badwolf_darkgutter = 0
 
 " NERDTree settings
@@ -140,11 +135,11 @@ let g:airline_symbols.readonly = ''
 let g:airline_linecolumn_prefix = '⭡'
 
 " Neo Complete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_fuzzy_completion = 1
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_fuzzy_completion = 1
 
 " Neo Snippets
-let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets, ~/.vim/bundle/custom-snippets/snippets'
+let g:neosnippet#snippets_directory = '~/dotfiles/snippets'
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#scope_aliases = {}
 let g:neosnippet#scope_aliases['ruby'] = 'ruby,rails'
@@ -189,5 +184,7 @@ let g:vimshell_prompt='✔-shell:▶ '
 "au BufRead,BufNewFile *.rabl setf ruby
 "autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "au BufRead,BufNewFile *.html.erb set ft=eruby.html
+
+let g:deoplete#enable_at_startup = 1
 
 source ~/dotfiles/keybindings.vim

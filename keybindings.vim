@@ -46,11 +46,6 @@ endfunction
 " Ctrl-p behaviour {{{
 nnoremap <Leader><Leader> :Unite -start-insert file_rec/async<CR>
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_reverse'])
-call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
-  \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'vendor/', 'log/', 'extract_plugins/', 'extended_upload_plugins/', 'archive/', 'rss_plugin/'], '\|'))
-
 let g:unite_source_grep_command = 'ag'
 let g:unite_prompt = '▶▶ '
 let g:unite_winheight = 15
@@ -109,11 +104,20 @@ nnoremap <leader>bp :bprevious<cr>
 nnoremap <leader>bn :bnext<cr>
 
 " Neo Complete Keybindings
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y> neocomplete#close_popup()
+"inoremap <expr><C-e> neocomplete#cancel_popup()
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
 
 
 " Neo Snippets Keybindings
@@ -129,11 +133,12 @@ smap <expr><C-n> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)"
       \: "\<C-n>"
 
+
 " Fugitive Key maps
-nnoremap <leader>gst :Gstatus<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>ga :Gwrite<cr>
-nnoremap <leader>go :Gread<cr>
+"nnoremap <leader>gst :Gstatus<cr>
+"nnoremap <leader>gc :Gcommit<cr>
+"nnoremap <leader>ga :Gwrite<cr>
+"nnoremap <leader>go :Gread<cr>
 
 " Flog Keys
 nnoremap <leader>fc :!flog % -d<cr>

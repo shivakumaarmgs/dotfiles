@@ -1,86 +1,102 @@
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-" Let NeoBundle manage NeoBundle
+set runtimepath+=/home/shivakumaar/.cache/dein/repos/github.com/Shougo/dein.vim
+
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+if dein#load_state('/home/shivakumaar/.cache/dein')
+  call dein#begin('/home/shivakumaar/.cache/dein')
 
-" Plugins by Shougo
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/neomru.vim'
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/shivakumaar/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-" ColorSchemes
-NeoBundle 'dandorman/vim-colors'
-NeoBundle 'lifepillar/vim-solarized8'
-NeoBundle 'sjl/badwolf'
-NeoBundle 'Yggdroot/indentLine'
+  " Add or remove your plugins here like this:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
 
-" Plugin for status bar
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-"NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+  call dein#add('Shougo/deoplete.nvim')
+  "call dein#add('Shougo/deoppet.nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+  call dein#add('Shougo/vimfiler.vim')
+  call dein#add('Shougo/vimshell.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('mileszs/ack.vim')
+  call dein#add('Shougo/unite-outline')
+  call dein#add('Shougo/neomru.vim')
 
-" Gist Vim
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
+  " ColorSchemes
+  "call dein#add('dandorman/vim-colors')
+  "call dein#add('lifepillar/vim-solarized8')
+  " call dein#add('sjl/badwolf')
+  call dein#add('flazz/vim-colorschemes') 
+  call dein#add('Yggdroot/indentLine')
 
-" Plugin for Snippets & Syntax
-NeoBundle 'honza/vim-snippets'
-"NeoBundle 'garbas/vim-snipmate'
-"NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'tmhedberg/matchit'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'robbles/logstash'
+  " Plugin for status bar
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
 
-" Plugins by TimPope
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat' 
-NeoBundle 'tpope/vim-endwise.git' 
-NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'tpope/vim-rake.git'
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-sleuth'
+  " Gist Vim
+  call dein#add('mattn/gist-vim')
+  call dein#add('mattn/webapi-vim')
 
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'thoughtbot/vim-rspec'
-NeoBundle 'ngmy/vim-rubocop'
-"NeoBundle 'sentientmonkey/vim-flog'
-"NeoBundle 'rainerborene/vim-reek'
-NeoBundle 'ekalinin/Dockerfile.vim'
+  " Plugin for Snippets & Syntax
+  call dein#add('honza/vim-snippets')
+  call dein#add('tmhedberg/matchit')
+  call dein#add('vim-syntastic/syntastic')
+  call dein#add('Raimondi/delimitMate')
+  call dein#add('elixir-lang/vim-elixir')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('robbles/logstash')
 
-" NERDTree and NERDTreeTabs
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/nerdcommenter'
-"NeoBundle 'jistr/vim-nerdtree-tabs'
+  " Plugins by TimPope
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('tpope/vim-endwise.git')
+  call dein#add('tpope/vim-surround.git')
+  call dein#add('tpope/vim-rake.git')
+  call dein#add('tpope/vim-rails.git')
+  call dein#add('tpope/vim-dispatch')
+  call dein#add('tpope/vim-sleuth')
 
-" Ctrl+P
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
+  call dein#add('godlygeek/tabular')
+  call dein#add('thoughtbot/vim-rspec')
+  call dein#add('ngmy/vim-rubocop')
+  "call dein#add('sentientmonkey/vim-flog')
+  "call dein#add('rainerborene/vim-reek')
+  call dein#add('ekalinin/Dockerfile.vim')
+  call dein#add('sheerun/vim-polyglot')
+
+  " NERDTree and NERDTreeTabs
+  call dein#add('preservim/nerdtree')
+  call dein#add('preservim/nerdcommenter')
+  "call dein#add('jistr/vim-nerdtree-tabs')
+
+  " Ctrl+P
+  call dein#add('kien/ctrlp.vim')
+  call dein#add('terryma/vim-multiple-cursors')
 
 
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'slim-template/vim-slim'
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('slim-template/vim-slim')
 
-call neobundle#end()
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
