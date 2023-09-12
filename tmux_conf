@@ -7,7 +7,7 @@ setw -g mode-keys vi
 set -g pane-base-index 1
 set -g base-index 1
 
-set-option -g default-shell "$SHELL -l"
+#set-option -g default-shell "$SHELL -l"
 set -g default-shell /bin/zsh
 
 bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
@@ -33,9 +33,9 @@ bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 
 # navigate pane through pane
-bind h select-pane -L 
-bind j select-pane -D 
-bind k select-pane -U 
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
 bind l select-pane -R
 
 # Cycle throug window
@@ -55,8 +55,8 @@ bind p paste-buffer
 #bind-key -t vi-copy 'y' copy-selection
 
 ## Join windows: <prefix> [, <prefix> ]
-bind-key [ join-pane -h -t {last}
-bind-key ] "break-pane"
+#bind-key [ "join-pane -h -t {last}"
+#bind-key ] "break-pane"
 
 # Theme
 set -g @batt_icon_charge_tier8 ''
@@ -99,21 +99,26 @@ setw -g window-status-separator ''
 set -g @world_clock_tz 'utc'
 set -g @world_clock_tz 'Asia/Kolkata'
 
-#set -g @sysstat_cpu_color_low "red"
-#set -g @sysstat_cpu_color_medium "red"
-#set -g @sysstat_cpu_color_stress "red"
-#set -g @sysstat_mem_color_low "red red red"
-#set -g @sysstat_mem_color_medium "red red red"
-#set -g @sysstat_mem_color_stress "red red red"
-#set -g @sysstat_swap_color_low "red"
-#set -g @sysstat_swap_color_medium "red"
-#set -g @sysstat_swap_color_stress "red"
+# set -g @sysstat_cpu_color_low "red"
+# set -g @sysstat_cpu_color_medium "red"
+# set -g @sysstat_cpu_color_stress "red"
+# set -g @sysstat_mem_color_low "red red red"
+# set -g @sysstat_mem_color_medium "red red red"
+# set -g @sysstat_mem_color_stress "red red red"
+# set -g @sysstat_swap_color_low "red"
+# set -g @sysstat_swap_color_medium "red"
+# set -g @sysstat_swap_color_stress "red"
+# set -g @sysstat_mem_color_low "green"
+# set -g @sysstat_mem_color_medium "blue"
+# set -g @sysstat_mem_color_stress "cyan"
 
-#set -g @sysstat_cpu_view_tmpl '#[fg=colour232,bg=colour154]CPU: #[fg=#{cpu.color},bg=#{cpu.color2}]#{cpu.pused}'
-#set -g @sysstat_mem_view_tmpl '#[fg=colour232,bg=colour154]MEM: #[fg=#{mem.color},bg=#{mem.color2}]#{mem.pused}'
+set -g @sysstat_cpu_view_tmpl '#[fg=colour232,bg=colour154]CPU: #[fg=#{cpu.color},bg=#{cpu.color2}]#{cpu.pused}'
+set -g @sysstat_mem_view_tmpl '#[fg=colour232,bg=colour154]MEM: #[fg=#{mem.color},bg=#{mem.color2}]#{mem.pused}'
 
-set -g status-left '#[fg=colour232,bg=colour154] #S #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics] #[fg=colour222,bg=colour238] #W #[fg=colour238,bg=colour235]#[fg=colour154,bg=colour235] #(whoami) '
-set -g status-right "#[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] #{world_clock_status} | %Y-%m-%d #[fg=colour232,bg=colour154] #{online_status}  #{battery_icon} #{battery_percentage} "
+# set -g status-left '#[fg=colour232,bg=colour154] #S #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics] #[fg=colour222,bg=colour238] #W #[fg=colour238,bg=colour235]#[fg=colour154,bg=colour235] #(whoami) '
+set -g status-left '#[fg=black,bg=green] #S #[fg=green,bg=colour238,nobold,nounderscore,noitalics]#[fg=yellow,bg=colour238] #W #[fg=colour238,bg=colour235]#[fg=green,bg=colour235] #(whoami) '
+# set -g status-right "#[fg=colour232,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour154,bg=colour232] UTC: #(TZ="UTC" date +%%H:%%M:%%S) | CET: #(TZ="CET" date +%%H:%%M:%%S) | IST: #(TZ="Asia/Kolkata" date +%%H:%%M:%%S) #[fg=colour232,bg=colour154] #[fg=colour232,bg=colour154] #{online_status}  #{battery_icon} #{battery_percentage} "
+set -g status-right "#[fg=black,bg=colour235,nobold,nounderscore,noitalics]#[fg=green,bg=black] UTC: #(TZ="UTC" date +%%H:%%M) | CET: #(TZ="CET" date +%%H:%%M) | IST: #(TZ="Asia/Kolkata" date +%%H:%%M) #[fg=green,bg=black]#[fg=black,bg=green] #{online_status}  #{battery_icon} #{battery_percentage} "
 
 #set -g status-right "#{sysstat_cpu} | #{sysstat_mem} | #{sysstat_swap} | #{sysstat_loadavg}"
 setw -g window-status-format '#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[default] #I  #W #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics].'
@@ -133,12 +138,21 @@ set -g @tpm_plugins "             \
       samoshkin/tmux-plugin-sysstat \
       sainnhe/tmux-fzf \
 "
+
 # Other examples:
 # github_username/plugin_name    \
 # git@github.com/user/plugin     \
 # git@bitbucket.com/user/plugin  \
 
 # initializes TMUX plugin manager
-      run-shell ~/.tmux/plugins/tpm/tpm
+run-shell ~/.tmux/plugins/tpm/tpm
 
-TMUX_FZF_OPTIONS="-m"
+
+TMUX_FZF_OPTIONS="-p -w 62% -h 38% -m"
+
+TMUX_FZF_MENU=\
+"foo\necho 'Hello!'\n"\
+"bar\nls ~\n"\
+"sh\nsh ~/test.sh\n"
+
+TMUX_FZF_LAUNCH_KEY="`"

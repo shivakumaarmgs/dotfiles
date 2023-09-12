@@ -18,19 +18,19 @@ Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
 
 Plug 'easymotion/vim-easymotion'
+Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'bkad/CamelCaseMotion'
-
 
 " File finder - CtrlP
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'yuki-yano/fzf-preview.vim'
 
 " AutoComplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-snippets', 'coc-html', 'coc-css', 'coc-git', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-snippets', 'coc-html', 'coc-css', 'coc-git', 'coc-tsserver', 'coc-go', 'coc-lists']
 
-Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 
 " Search(and Replace) related
@@ -59,6 +59,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'Raimondi/delimitMate'
 
+Plug 'hashivim/vim-terraform'
+Plug 'leafgarland/typescript-vim'
+
+Plug 'dense-analysis/ale'
+
 " Appearance
 Plug 'sjl/badwolf'
 Plug 'vim-airline/vim-airline'
@@ -85,7 +90,7 @@ set foldignore=
 set nofoldenable
 set completeopt=longest,menuone
 set number
-set relativenumber
+" set relativenumber
 set cmdheight=2
 
 " making vim fast
@@ -141,6 +146,7 @@ let mapleader=' '
 
 nnoremap <leader>. :tabnext<CR>
 nnoremap <leader>, :tabprevious<CR>
+nnoremap <leader>bp :b#<CR>
 nnoremap <C-t> :tabe<CR>
 
 " From Vysakh0 dotfiles
@@ -155,7 +161,10 @@ cnoreabbrev Q q
 map <C-a> ggVG
 vmap <C-c> "+y
 vmap <C-x> dd
-nnoremap <C-v> p
+" nnoremap <C-v> p
+
+nnoremap <leader>= :vsplit<CR>
+nnoremap <leader>- :split<CR>
 
 " ----------------------------------------------------------------
 " basic mappings from https://github.com/nickjj/dotfiles
@@ -187,6 +196,11 @@ xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 " Clear search highlights.
 map <leader>cs :let @/=''<CR>
 
+" format json
+nnoremap <leader>fj :.! python3 -m json.tool<cr>
+nnoremap <leader>fJ :%! python3 -m json.tool<cr>
+
+let g:python3_host_prog = '/usr/bin/python3'
 
 " Toggle quickfix window.
 function! QuickFix_toggle()
@@ -225,13 +239,6 @@ inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 " File finder - CtrlP
 nnoremap <C-p> :Files<Cr>
 let g:fzf_layout = { 'down': '40%' }
-
-" Allow passing optional flags into the Rg command.
-"   Example: :Rg myterm -g '*.md'
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \ "rg --column --line-number --no-heading --color=always --smart-case " .
-      \ <q-args>, 1, fzf#vim#with_preview(), <bang>0)
 
 " .............................................................................
 " mhinz/vim-grepper
@@ -324,21 +331,38 @@ augroup END
 " .............................................................................
 " neoclide/coc.nvim
 " .............................................................................
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<C-l>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<C-k>'
-
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" from https://stackoverflow.com/a/63391962
+" You have to remap <cr> to make it confirms completion.
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" use <c-space>for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+"Use <Tab> and <S-Tab> to navigate the completion list:
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-tab>'
 
 " https://github.com/tpope/vim-endwise/issues/22#issuecomment-554685904
 let g:endwise_no_mappings = v:true
-inoremap <expr> <Plug>CustomCocCR pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-imap <CR> <Plug>CustomCocCR<Plug>DiscretionaryEnd
 
 " .............................................................................
 " Raimondi/delimitMate
@@ -377,3 +401,13 @@ let g:airline_symbols.linenr = '|'
 " let g:airline_symbols.maxlinenr = '☰ '
 let g:airline_symbols.maxlinenr = '|'
 let g:airline_symbols.dirty='⚡'
+
+let g:ale_sign_column_always = 1
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+let g:ale_disable_lsp = 1
+let g:ale_sign_error = 'ךּ'
+let g:ale_sign_warning = 'כּ'
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1

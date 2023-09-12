@@ -10,38 +10,37 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
-#. ~/powerline/powerline/bindings/zsh/powerline.zsh
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
-
 unsetopt nomatch
 
-export TERM='xterm-256color'
+#export TERM='xterm-256color'
 
-alias vi=vim
+alias vim="nvim"
+alias vi="nvim"
+alias old_vim="vim"
+alias old_vi="vi"
 alias vc='vim ~/.vimrc'
 alias vb='vim ~/dotfiles/bundles.vim'
 alias vk='vim ~/dotfiles/keybindings.vim'
+alias nvc='vim ~/.config/nvim/init.vim'
 alias zc='vim ~/.zshrc'
 alias zr='source ~/.zshrc'
+alias zpc='vim ~/.zpreztorc'
 alias tc='vim ~/.tmux.conf'
-alias muxi='cd ~/.tmuxinator/' 
+alias muxi='cd ~/.tmuxinator/'
 alias :q='exit'
 alias :Q='exit'
-alias tmux='TERM=xterm-256color tmux -u'
+#alias tmux='TERM=xterm-256color tmux -u'
 alias mux='tmuxinator'
-#alias sae='vi ~/dotfiles/sys_alias_and_env'
+alias sae='vi ~/dotfiles/sys_alias_and_env'
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
-export NVM_DIR="/home/prompt/.nvm"
+source ~/dotfiles/sys_alias_and_env
 
-#source ~/dotfiles/sys_alias_and_env
-source ~/.sdf_bashrc_and_alias
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export BAT_THEME="gruvbox-dark"
