@@ -1,4 +1,7 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["py", "yaml", "json"],
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
   "solargraph.transport": "external",
   "solargraph.diagnostics": true,
   "solargraph.externalServer": {

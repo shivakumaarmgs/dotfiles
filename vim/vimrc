@@ -1,4 +1,4 @@
-source ~/dotfiles/bundles.vim
+source ~/dotfiles/vim/bundles.vim
 
 " Required:
 "filetype plugin on
@@ -187,4 +187,4 @@ let g:vimshell_prompt='✔-shell:▶ '
 
 let g:deoplete#enable_at_startup = 1
 
-source ~/dotfiles/keybindings.vim
+source ~/dotfiles/vim/keybindings.vim

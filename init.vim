@@ -17,19 +17,24 @@ Plug 'unblevable/quick-scope'
 Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
 
-Plug 'easymotion/vim-easymotion'
-Plug 'ludovicchabant/vim-gutentags'
-
 Plug 'bkad/CamelCaseMotion'
+Plug 'junegunn/vim-easy-align'
 
 " File finder - CtrlP
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim'
+Plug 'zackhsi/fzf-tags'
+
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " AutoComplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-snippets', 'coc-html', 'coc-css', 'coc-git', 'coc-tsserver', 'coc-go', 'coc-lists']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-json', 'coc-snippets', 'coc-pyright', 'coc-yaml', 'coc-html', 'coc-css', 'coc-git', 'coc-tsserver', 'coc-go', 'coc-lists', 'coc-docker' ]
 
 Plug 'honza/vim-snippets'
 
@@ -66,11 +71,19 @@ Plug 'dense-analysis/ale'
 
 " Appearance
 Plug 'sjl/badwolf'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mhinz/vim-startify'
 Plug 'Konfekt/FastFold'
+
+Plug 'folke/tokyonight.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+
+Plug 'morhetz/gruvbox'
+
+Plug 'srcery-colors/srcery-vim'
 
 call plug#end()
 
@@ -121,14 +134,6 @@ set incsearch " highlight while searching
 set shortmess+=c
 set mouse="a" " enable mouse in all mode"
 
-" clear background color in vim
-set t_ut=
-" set term=screen-256color
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-set background=dark
-
 "https://robots.thoughtbot.com/wrap-existing-text-at-80-characters-in-vim
 highlight ColorColumn ctermbg=gray
 set colorcolumn=80
@@ -144,18 +149,21 @@ let mapleader=' '
 " custom mappings
 " ----------------------------------------------------------------
 
-nnoremap <leader>. :tabnext<CR>
-nnoremap <leader>, :tabprevious<CR>
+nnoremap <leader>] :tabnext<CR>
+nnoremap <leader>[ :tabprevious<CR>
+nnoremap <C-n> :tabe<CR>
+
+nnoremap <leader>. :bn<CR>
+nnoremap <leader>, :bp<CR>
 nnoremap <leader>bp :b#<CR>
-nnoremap <C-t> :tabe<CR>
+nnoremap <C-t> :e<CR>
 
 " From Vysakh0 dotfiles
 " exit vim with :Q.
 cnoreabbrev W w
-cnoreabbrev WQ wq
-cnoreabbrev Wq wq
 cnoreabbrev X x
 cnoreabbrev Q q
+cnoreabbrev q bd
 
 " Copy Paste Delete
 map <C-a> ggVG
@@ -244,12 +252,15 @@ let g:fzf_layout = { 'down': '40%' }
 " mhinz/vim-grepper
 " .............................................................................
 
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0) 
+
 let g:grepper={}
 let g:grepper.tools=["rg"]
 
 xmap gr <plug>(GrepperOperator)
 " Search for text in all files
-nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>g :Rg<cr>
 " Search for text under the cursor in all files
 nnoremap <leader>* :Grepper -tool rg -cword<cr>
 
@@ -371,43 +382,76 @@ let delimitMate_matchpairs = '(:),[:],{:},<:>'
 let delimitMate_quotes = "\" ' ` | %"
 
 " .............................................................................
-" sjl/badwolf
+" Themes
 " .............................................................................
+
+" clear background color in vim
+set t_ut=
+" set term=screen-256color
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+
+set background=dark
 
 colorscheme badwolf
 let g:badwolf_darkgutter = 0
 
+" colorscheme tokyonight-night
+
+" set background=dark
+" colorscheme gruvbox
+
+" colorscheme srcery
+
 " .............................................................................
 " vim-airline/vim-airline
 " .............................................................................
-let g:airline_theme= 'badwolf'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#fern#enabled = 1
+" let g:airline_theme= 'badwolf'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#coc#enabled = 1
+" let g:airline#extensions#fern#enabled = 1
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" " let g:airline_symbols.colnr = ' :'
+" let g:airline_symbols.colnr = ''
+" let g:airline_symbols.readonly = ''
+" " let g:airline_symbols.linenr = ':'
+" let g:airline_symbols.linenr = '|'
+" " let g:airline_symbols.maxlinenr = '☰ '
+" let g:airline_symbols.maxlinenr = '|'
+" let g:airline_symbols.dirty='⚡'
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-" let g:airline_symbols.colnr = ' :'
-let g:airline_symbols.colnr = ''
-let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ':'
-let g:airline_symbols.linenr = '|'
-" let g:airline_symbols.maxlinenr = '☰ '
-let g:airline_symbols.maxlinenr = '|'
-let g:airline_symbols.dirty='⚡'
 
-let g:ale_sign_column_always = 1
-let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
-let g:ale_disable_lsp = 1
-let g:ale_sign_error = 'ךּ'
-let g:ale_sign_warning = 'כּ'
-let g:ale_fix_on_save = 1
-let g:airline#extensions#ale#enabled = 1
+let g:fzf_tags_command='ctags -R -o tags --exclude=../*'
+
+set tags=~/.cache/tags
+
+" generate datebases in my cache directory, prevent gtags files polluting my project
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+let g:ale_linters = {'python': ['pyright']}
+
+source ~/dotfiles/lualine/lualine.lua

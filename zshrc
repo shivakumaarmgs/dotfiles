@@ -44,3 +44,7 @@ source ~/dotfiles/sys_alias_and_env
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export BAT_THEME="gruvbox-dark"
+
+. "$HOME/.asdf/asdf.sh"
+
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql

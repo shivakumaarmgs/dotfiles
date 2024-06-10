@@ -104,7 +104,7 @@ function prompt_steeef_setup {
   zstyle ':prezto:module:ruby:info:version' format "[%F{red} %v%f]"
 
   # current time
-  local ctime="%f[%F{blue}%B祥%*%b%f]"
+  local ctime="%f[${_prompt_steeef_colors[1]}%B祥%*%b%f]"
 
   # Define prompts.
   # PROMPT="${ctime}$"'{ruby_info[version]}'"[${_prompt_steeef_colors[3]} %n%f]:${_prompt_steeef_colors[5]}%~%f "'${vcs_info_msg_0_}'"
