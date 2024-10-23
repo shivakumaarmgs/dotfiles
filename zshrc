@@ -21,7 +21,7 @@ alias old_vi="vi"
 alias vc='vim ~/.vimrc'
 alias vb='vim ~/dotfiles/bundles.vim'
 alias vk='vim ~/dotfiles/keybindings.vim'
-alias nvc='vim ~/.config/nvim/init.vim'
+alias nvc='cd ~/.config/nvim && vi'
 alias zc='vim ~/.zshrc'
 alias zr='source ~/.zshrc'
 alias zpc='vim ~/.zpreztorc'
@@ -33,6 +33,8 @@ alias :Q='exit'
 alias mux='tmuxinator'
 alias sae='vi ~/dotfiles/sys_alias_and_env'
 
+alias rspec-diff='bundle exec rspec $(git idff --name-only|grep "_spec.rb")'
+
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -43,8 +45,12 @@ source ~/dotfiles/sys_alias_and_env
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-export BAT_THEME="gruvbox-dark"
+# export BAT_THEME="gruvbox-dark"
+export BAT_THEME="Catppuccin Mocha"
 
 . "$HOME/.asdf/asdf.sh"
 
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+export PATH=$(go env GOPATH)/bin:$PATH
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
