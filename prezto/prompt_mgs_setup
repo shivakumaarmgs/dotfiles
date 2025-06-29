@@ -54,12 +54,12 @@ function prompt_paradox_build_prompt {
   fi
 
   if [[ -n "$python_info" ]]; then
-    prompt_paradox_start_segment white black '${(e)python_info[virtualenv]}'
+    prompt_paradox_start_segment none black '${(e)python_info[virtualenv]}'
   fi
 
-  # if [[ -n "$ruby_info" ]]; then
-  #   prompt_paradox_start_segment none white '${(e)ruby_info[version]}'
-  # fi
+  if [[ -n "$ruby_info" ]]; then
+    prompt_paradox_start_segment none white '${(e)ruby_info[version]}'
+  fi
 }
 
 function preexec() {
@@ -159,7 +159,7 @@ function prompt_paradox_setup {
     'status' '%s%D%A%B%S%a%d%m%r%U%u'
 
   # %v - virtualenv name.
-  zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{blue}󰌠 %v'
 
   # Set ruby-info parameters.
   zstyle ':prezto:module:ruby:info:version' format "%F{red} %v"

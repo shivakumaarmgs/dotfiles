@@ -45,6 +45,11 @@ source ~/dotfiles/sys_alias_and_env
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+export CONFIGURE_ARGS=""
+for ext in openssl readline libyaml zlib; do
+  CONFIGURE_ARGS="${CONFIGURE_ARGS} --with-$ext-dir=$(brew --prefix $ext)"
+done
+
 # export BAT_THEME="gruvbox-dark"
 export BAT_THEME="Catppuccin Mocha"
 
