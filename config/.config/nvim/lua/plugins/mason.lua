@@ -6,7 +6,8 @@
 -- * override the configuration of LazyVim plugins
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
+    version = "^1.0.0",
     opts = {
       ensure_installed = {
         "stylua",

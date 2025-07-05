@@ -53,9 +53,15 @@ done
 # export BAT_THEME="gruvbox-dark"
 export BAT_THEME="Catppuccin Mocha"
 
-. "$HOME/.asdf/asdf.sh"
+# . "$HOME/.asdf/asdf.sh"
+source $(brew --prefix asdf)/libexec/asdf.sh
+
+. ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
 
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 export PATH=$(go env GOPATH)/bin:$PATH
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
